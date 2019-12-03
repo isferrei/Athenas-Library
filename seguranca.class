@@ -1,0 +1,34 @@
+<?php 
+include 'livraria.class';
+class seguranca extended banco{
+function verifica (){
+$resposta=mysql_query("select*
+from email where email=
+'$this -> email', '$this -> cpf')");
+if (mysql_num_rows($esposta)==0){
+session_start();
+$_session['email']=$this -> email
+header('location:index.php');
+}else{
+echo"Email ou cpf invalidos";
+echo"<a href='index.php'> voltar</a>";
+}
+}
+function expulsa (){
+session_start()
+if($_session['email']==null){
+echo"<script>alert('voce não esta logado!');
+location.href('form_login.php');
+</script>";
+}
+function sair(){
+session_start();
+$_session['email']=null;
+}
+}?>
+arquivo:form_login.php
+<form.method='post action='login.php'>
+Email:<input type="text" name="txtemail">
+cpf:<input type="password" name="txtcpf">
+<input type="submit" value="entrar">
+</form>
